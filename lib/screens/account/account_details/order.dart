@@ -11,7 +11,18 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     List<Widget> orders = [
-      orderItem(isOpen: false),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
+      orderItem(),
     ];
     return Scaffold(
       appBar: AppBar(

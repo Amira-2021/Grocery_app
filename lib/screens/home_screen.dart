@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_app/screens/account/account_details/favourit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app/cubit/item_cubit.dart';
+import 'package:grocery_app/cubit/read_item_cubit.dart';
+import 'package:grocery_app/models/item_modal_column.dart';
 import 'package:grocery_app/screens/home.dart';
-import 'package:grocery_app/screens/intro_screen.dart';
 import 'package:grocery_app/shared/components/categories.dart';
+import 'package:grocery_app/shared/components/item_column_catagory.dart';
 import 'package:grocery_app/shared/components/login_comp.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -44,41 +46,41 @@ class _HomeScreenState extends State<HomeScreen> {
         urlImage: "assets/img/flo.png"),
   ];
 
-  static List<ItemModelColumn> categoryItem = [
+  List<ItemModelColumn> categoryItem = [
     ItemModelColumn(
       name: "Fresh Peach",
-      color: Color(0xFFFFCEC1),
+      color: 0xFFFFCEC1,
       price: "\$ 220",
       urlImage: "assets/img/fresh.png",
     ),
     ItemModelColumn(
       name: "Avacoda",
       price: "\$ 220",
-      color: Color(0xFFFCFFD9),
+      color: 0xFFFCFFD9,
       urlImage: "assets/img/avacoda.png",
     ),
     ItemModelColumn(
       name: "Pineapple",
       price: "\$ 250",
-      color: Color(0xFFFFE6C2),
+      color: 0xFFFFE6C2,
       urlImage: "assets/img/pine.png",
     ),
     ItemModelColumn(
       name: "Black Grapes",
       price: "\$ 400",
-      color: Color(0xFFFEE1ED),
+      color: 0xFFFEE1ED,
       urlImage: "assets/img/black.png",
     ),
     ItemModelColumn(
       name: "Pomegranate",
       price: "\$ 220",
-      color: Color(0xFFFFE3E2),
+      color: 0xFFFFE3E2,
       urlImage: "assets/img/pom.png",
     ),
     ItemModelColumn(
       name: "Fresh B Roccoli",
       price: "\$ 220",
-      color: Color(0xFFD2FFD0),
+      color: 0xFFD2FFD0,
       urlImage: "assets/img/freb.png",
     ),
   ];
@@ -190,8 +192,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisExtent: 300,
                             mainAxisSpacing: 5),
                     itemCount: categoryItem.length,
-                    itemBuilder: (context, index) => itemColumnCategory(
-                        categoryItem[index], index, update, context)),
+                    itemBuilder: (context, index) => ItemColumnCategory(
+                          fun: update,
+                          indexFav: index,
+                          itemModel: categoryItem[index],
+                        )),
               ),
             ],
           ),

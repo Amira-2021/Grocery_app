@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app/cubit/read_item_cubit.dart';
+import 'package:grocery_app/models/item_modal_column.dart';
 import 'package:grocery_app/screens/home.dart';
 import 'account_details/aboutme.dart';
 import 'account_details/nottify.dart';
@@ -21,6 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor: Colors.green,
@@ -112,7 +116,10 @@ class _AccountScreenState extends State<AccountScreen> {
                     profileItemRow(
                         icon: Icons.favorite_border,
                         name: "My Favorites",
-                        goToScreen: OrderScreen(),
+                        goToScreen: FavouritScreen(
+                            model: BlocProvider.of<ReadItemCubit>(context)
+                                .list!
+                                .first),
                         context: context),
                     profileItemRow(
                         icon: Icons.home_filled,

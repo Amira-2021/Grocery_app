@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:grocery_app/screens/account/account_details/order.dart';
 import 'package:grocery_app/screens/home.dart';
 import 'package:grocery_app/screens/home_screen.dart';
 import 'package:grocery_app/shared/components/account_comp.dart';
@@ -108,7 +109,7 @@ class AboutMe extends StatelessWidget {
               margin: EdgeInsets.only(top: 20),
               child: generalButton(
                   title: "Save Setting",
-                  screen: HomePage(),
+                  screen: OrderScreen(),
                   contextNow: context),
             )
           ],

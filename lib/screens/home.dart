@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app/models/item_modal_column.dart';
 import 'package:grocery_app/screens/account/account.dart';
 import 'package:grocery_app/screens/account/account_details/order.dart';
 import 'package:grocery_app/screens/card.dart';
-import 'account/account_details/favourit.dart';
 import 'package:grocery_app/screens/home_screen.dart';
 import 'package:grocery_app/shared/colors/color.dart';
-import 'package:grocery_app/shared/components/categories.dart';
-import 'package:grocery_app/shared/components/login_comp.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,12 +13,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index = 0;
-
-  List<Widget> screens = [
+  List<dynamic> screens = [
     HomeScreen(),
     AccountScreen(),
     OrderScreen(),
-    CardScreen()
+    CardScreen(),
   ];
 
   @override
@@ -55,18 +52,4 @@ class ItemModelRow {
 
   ItemModelRow(
       {required this.name, required this.background, required this.urlImage});
-}
-
-class ItemModelColumn {
-  String urlImage;
-  String name;
-  Color? color;
-  String? price;
-  bool isFavorite = false;
-
-  ItemModelColumn(
-      {required this.name,
-      required this.color,
-      required this.price,
-      required this.urlImage});
 }
