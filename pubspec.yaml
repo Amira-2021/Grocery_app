@@ -35,6 +35,8 @@ dependencies:
   hive_flutter:
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
+  camera: ^0.10.5+5
+  image_picker: ^1.0.4
 
   flutter:
     sdk: flutter

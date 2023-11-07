@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app/cubit/read_item_cubit.dart';
 import 'package:grocery_app/models/item_modal_column.dart';
 import 'package:grocery_app/screens/account/account.dart';
+import 'package:grocery_app/screens/account/account_details/favourit.dart';
 import 'package:grocery_app/screens/account/account_details/order.dart';
 import 'package:grocery_app/screens/card.dart';
 import 'package:grocery_app/screens/home_screen.dart';
@@ -19,7 +22,6 @@ class _HomePageState extends State<HomePage> {
     OrderScreen(),
     CardScreen(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +39,8 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: ""),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_circle_outlined), label: ""),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite_border), label: ""),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.card_travel_sharp), label: ""),
           BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: ""),
         ],
       ),

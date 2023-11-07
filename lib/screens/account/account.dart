@@ -1,9 +1,14 @@
+import 'dart:io';
+
+import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:grocery_app/cubit/read_item_cubit.dart';
 import 'package:grocery_app/models/item_modal_column.dart';
+import 'package:grocery_app/screens/account/account_details/address.dart';
 import 'package:grocery_app/screens/home.dart';
+import 'package:image_picker/image_picker.dart';
 import 'account_details/aboutme.dart';
 import 'account_details/nottify.dart';
 import 'account_details/order.dart';
@@ -20,6 +25,49 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   void update() {
     setState(() {});
+  }
+
+  File? fileImage;
+  _showOption(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Choose Options"),
+              content: Container(
+                width: 250,
+                height: 150,
+                child: Column(
+                  children: [
+                    ListTile(
+                      leading: const Icon(Icons.add_photo_alternate_outlined),
+                      title: const Text("Gallery"),
+                      onTap: () => _photoFromGallery(context),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.camera_alt),
+                      title: const Text("Camera"),
+                      onTap: () => _photoFromCamera(context),
+                    )
+                  ],
+                ),
+              ),
+            ));
+  }
+
+  Future _photoFromGallery(BuildContext context) async {
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      fileImage = File(image!.path);
+    });
+    Navigator.pop(context);
+  }
+
+  Future _photoFromCamera(BuildContext context) async {
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      fileImage = File(image!.path);
+    });
+    Navigator.pop(context);
   }
 
   @override
@@ -54,18 +102,25 @@ class _AccountScreenState extends State<AccountScreen> {
                 child: Column(
                   children: [
                     Stack(
+                      //AssetImage("assets/img/profile.png")fileImage!=null?
                       children: [
-                        const CircleAvatar(
-                          backgroundImage: AssetImage("assets/img/profile.png"),
-                          radius: 60,
-                        ),
+                        fileImage != null
+                            ? CircleAvatar(
+                                backgroundImage: FileImage(fileImage!),
+                                radius: 60,
+                              )
+                            : CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/img/profile.png"),
+                                radius: 60,
+                              ),
                         Positioned(
                           child: CircleAvatar(
                             radius: 15,
                             backgroundColor: Colors.green,
                             child: IconButton(
                               padding: EdgeInsets.all(0),
-                              onPressed: () {},
+                              onPressed: () => _showOption(context),
                               icon: Icon(
                                 Icons.camera_alt,
                                 color: Colors.white,
@@ -77,6 +132,9 @@ class _AccountScreenState extends State<AccountScreen> {
                           left: 90,
                         ),
                       ],
+                    ),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Text(
                       "Amira Ahmed",
@@ -125,7 +183,7 @@ class _AccountScreenState extends State<AccountScreen> {
                         icon: Icons.home_filled,
                         name: "My Address",
                         context: context,
-                        goToScreen: AccountScreen()),
+                        goToScreen: AddressScreen()),
                     profileItemRow(
                         icon: Icons.credit_card,
                         name: "Credit Cards",

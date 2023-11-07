@@ -8,10 +8,28 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: [],
+    return Scaffold(
+      // appBar: AppBar(
+      //   elevation: 0,
+      //   backgroundColor: Colors.transparent,
+      //   title: IconButton(
+      //     onPressed: (){},
+      //     icon: Icon,
+      //   ),
+      // ),
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Container(
+              child: Stack(
+                children: [
+                  
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

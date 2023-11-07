@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grocery_app/cubit/delete_cubit.dart';
 import 'package:grocery_app/cubit/item_cubit.dart';
 import 'package:grocery_app/cubit/read_item_cubit.dart';
 import 'package:grocery_app/models/item_modal_column.dart';
 import 'package:grocery_app/screens/account/account_details/favourit.dart';
+import 'package:grocery_app/screens/details_item.dart';
 
 class ItemColumnCategory extends StatelessWidget {
   final ItemModelColumn itemModel;
@@ -15,30 +17,48 @@ class ItemColumnCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var model = ItemModelColumn(
+      name: itemModel.name,
+      color: itemModel.color,
+      price: itemModel.price,
+      urlImage: itemModel.urlImage,
+    );
     return BlocBuilder<ItemCubit, ItemState>(
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
-            var model = ItemModelColumn(
-              name: itemModel.name,
-              color: itemModel.color,
-              price: itemModel.price,
-              urlImage: itemModel.urlImage,
-            );
-            BlocProvider.of<ItemCubit>(context).addItem(model);
-            BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
+            if (itemModel.isFavorite == true) {
+              BlocProvider.of<ItemCubit>(context).addItem(model);
+              BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
 
-            itemModel.isFavorite == true
-                ? Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FavouritScreen(
-                              model: model,
-                            )),
-                  )
-                : Container(
-                    color: Colors.red,
-                  );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DetailsView(
+                            model: model,
+                          )));
+            } else {
+              BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
+            }
+            // itemModel.isFavorite == true
+            //     ? BlocProvider.of<ItemCubit>(context).addItem(model)
+            //     :
+            // BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
+
+            // itemModel.isFavorite == true
+            //     ? Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => FavouritScreen(
+            //                   model: model,
+            //                 )),
+            //       )
+            //     : Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => DetailsView(
+            //                   model: model,
+            //                 )));
           },
           child: Container(
             padding: const EdgeInsets.all(10),
