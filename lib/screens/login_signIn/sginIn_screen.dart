@@ -28,7 +28,7 @@ class _SignInScreenState extends State<SignInScreen> {
               title: "Create Account",
               hint: "Quickly create Account",
               islogin: false,
-              titleButtonText: "login",
+              titleButtonText: "Login",
               hintButtonText: "Already have an account ?",
               titleButton: "Register",
               swt: false,

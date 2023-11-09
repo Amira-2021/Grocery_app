@@ -27,16 +27,14 @@ class ItemColumnCategory extends StatelessWidget {
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsView(
+                          model: model,
+                        )));
             if (itemModel.isFavorite == true) {
-              BlocProvider.of<ItemCubit>(context).addItem(model);
               BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
-
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailsView(
-                            model: model,
-                          )));
             } else {
               BlocProvider.of<ReadItemCubit>(context).fetchAllItem();
             }
@@ -79,6 +77,7 @@ class ItemColumnCategory extends StatelessWidget {
                           itemModel!.isFavorite == true
                               ? itemModel.isFavorite = false
                               : itemModel!.isFavorite = true;
+                          BlocProvider.of<ItemCubit>(context).addItem(model);
                         },
                         icon: Icon(
                           Icons.favorite,

@@ -34,85 +34,91 @@ class AboutMe extends StatelessWidget {
       body: Container(
         width: double.infinity,
         color: Colors.grey.shade200,
-        child: Column(
-          children: [
-            Container(
-              width: 381,
-              height: 290,
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "Personal Details",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: 381,
+                height: 290,
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Personal Details",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 381,
-                    height: 220,
-                    child: Column(
-                      children: [
-                        buildInputAccount(
-                            icon: Icons.account_circle, text: "Russell Austin"),
-                        buildInputAccount(
-                            text: "russell.partner@gmail.com",
-                            icon: Icons.email),
-                        buildInputAccount(
-                            text: "+1  202  555  0142 ", icon: Icons.call)
-                      ],
-                    ),
-                  )
-                ],
+                    Container(
+                      width: 381,
+                      height: 220,
+                      child: Column(
+                        children: [
+                          buildInputAccount(
+                              icon: Icons.account_circle,
+                              text: "Russell Austin"),
+                          buildInputAccount(
+                              text: "russell.partner@gmail.com",
+                              icon: Icons.email),
+                          buildInputAccount(
+                              text: "+1  202  555  0142 ", icon: Icons.call)
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: 381,
-              height: 290,
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "Change Password",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+              Container(
+                width: 381,
+                height: 290,
+                padding: EdgeInsets.only(top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "Change Password",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 381,
-                    height: 220,
-                    child: Column(
-                      children: [
-                        buildInputAccount(
-                            icon: Icons.lock, text: "Current password"),
-                        buildInputAccount(text: "* * * *", icon: Icons.lock),
-                        buildInputAccount(
-                            text: "Confirm password ", icon: Icons.lock)
-                      ],
+                    Container(
+                      width: 381,
+                      height: 220,
+                      child: Column(
+                        children: [
+                          buildInputAccount(
+                              icon: Icons.lock, text: "Current password"),
+                          buildInputAccount(text: "* * * *", icon: Icons.lock),
+                          buildInputAccount(
+                              text: "Confirm password ", icon: Icons.lock)
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: 380,
-              margin: EdgeInsets.only(top: 20),
-              child: generalButton(
-                  title: "Save Setting",
-                  screen: OrderScreen(),
-                  contextNow: context),
-            )
-          ],
+              Container(
+                width: 380,
+                margin: EdgeInsets.only(top: 20),
+                child: generalButton(
+                    title: "Save Setting",
+                    screen: OrderScreen(),
+                    contextNow: context),
+              ),
+              const SizedBox(
+                height: 20,
+              )
+            ],
+          ),
         ),
       ),
     );

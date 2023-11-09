@@ -94,10 +94,10 @@ class _AccountScreenState extends State<AccountScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
-                padding: EdgeInsets.only(
-                  top: 70,
+                padding: const EdgeInsets.only(
+                  top: 40,
                 ),
                 child: Column(
                   children: [
@@ -136,11 +136,11 @@ class _AccountScreenState extends State<AccountScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
+                    const Text(
                       "Amira Ahmed",
                       style: TextStyle(fontSize: 20),
                     ),
-                    Text(
+                    const Text(
                       "amira123@gmail.com",
                       style: TextStyle(color: Colors.grey),
                     ),
@@ -149,62 +149,64 @@ class _AccountScreenState extends State<AccountScreen> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
                   ),
                   color: Colors.grey.shade200,
                 ),
-                child: Column(
-                  children: [
-                    profileItemRow(
-                        icon: Icons.account_circle_outlined,
-                        name: "About Me",
-                        context: context,
-                        goToScreen: AboutMe()),
-                    profileItemRow(
-                        icon: Icons.card_travel_sharp,
-                        name: "My Orders",
-                        context: context,
-                        goToScreen: OrderScreen()),
-                    profileItemRow(
-                        icon: Icons.favorite_border,
-                        name: "My Favorites",
-                        goToScreen: FavouritScreen(
-                            model: BlocProvider.of<ReadItemCubit>(context)
-                                .list!
-                                .first),
-                        context: context),
-                    profileItemRow(
-                        icon: Icons.home_filled,
-                        name: "My Address",
-                        context: context,
-                        goToScreen: AddressScreen()),
-                    profileItemRow(
-                        icon: Icons.credit_card,
-                        name: "Credit Cards",
-                        goToScreen: OrderScreen(),
-                        context: context),
-                    profileItemRow(
-                        icon: Icons.recycling,
-                        name: "Transactions",
-                        context: context,
-                        goToScreen: OrderScreen()),
-                    profileItemRow(
-                        icon: Icons.notifications,
-                        name: "Notifications",
-                        goToScreen: NotifiyScreen(),
-                        context: context),
-                    profileItemRow(
-                        icon: Icons.logout,
-                        name: "Sign out",
-                        context: context,
-                        goToScreen: IntoScreen()),
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      profileItemRow(
+                          icon: Icons.account_circle_outlined,
+                          name: "About Me",
+                          context: context,
+                          goToScreen: AboutMe()),
+                      profileItemRow(
+                          icon: Icons.card_travel_sharp,
+                          name: "My Orders",
+                          context: context,
+                          goToScreen: OrderScreen()),
+                      profileItemRow(
+                          icon: Icons.favorite_border,
+                          name: "My Favorites",
+                          goToScreen: FavouritScreen(
+                              model: BlocProvider.of<ReadItemCubit>(context)
+                                  .list!
+                                  .first),
+                          context: context),
+                      profileItemRow(
+                          icon: Icons.home_filled,
+                          name: "My Address",
+                          context: context,
+                          goToScreen: AddressScreen()),
+                      profileItemRow(
+                          icon: Icons.credit_card,
+                          name: "Credit Cards",
+                          goToScreen: OrderScreen(),
+                          context: context),
+                      profileItemRow(
+                          icon: Icons.recycling,
+                          name: "Transactions",
+                          context: context,
+                          goToScreen: OrderScreen()),
+                      profileItemRow(
+                          icon: Icons.notifications,
+                          name: "Notifications",
+                          goToScreen: NotifiyScreen(),
+                          context: context),
+                      profileItemRow(
+                          icon: Icons.logout,
+                          name: "Sign out",
+                          context: context,
+                          goToScreen: IntoScreen()),
+                    ],
+                  ),
                 ),
               ),
             ),

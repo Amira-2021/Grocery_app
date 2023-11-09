@@ -101,10 +101,13 @@ Widget buildLoginRegisterForm({
                           color: Colors.grey,
                         ),
                         eye: const Icon(Icons.remove_red_eye)),
-                generalButton(
-                    title: titleButton,
-                    contextNow: contextNow,
-                    screen: HomePage()),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: generalButton(
+                      title: titleButton,
+                      contextNow: contextNow,
+                      screen: HomePage()),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

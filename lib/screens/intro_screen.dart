@@ -39,15 +39,12 @@ class _IntoScreenState extends State<IntoScreen> {
                 image: "assets/img/intro2.png",
                 title: "Benefits from Using",
                 details:
-                    "Businesses can customize the app by considering additional functionality and features."
-                    " It can also take into consideration featured stores, maps, and shopping carts."),
+                    "Businesses can customize the app by considering additional functionality and features."),
             PagesIntro(
                 image: "assets/img/intro3.png",
                 title: "Reach to goals on Time",
                 details:
-                    "Grocery delivery app are highly popular for delivering services at the minimum expected time. "
-                    "It helps the users achieve their goals,"
-                    " such as maximum customer reach and increased potential sales."),
+                    "Grocery delivery app are highly popular for delivering services at the minimum expected time. "),
           ],
         ),
       ),
